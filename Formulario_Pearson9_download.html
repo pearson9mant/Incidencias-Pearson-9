@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Formulario Incidencias Pearson 9</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+label {
+    font-weight: bold;
+}
+input, textarea {
+    width: 100%;
+    padding: 8px;
+    margin: 6px 0 16px 0;
+    font-size: 16px;
+}
+button {
+    background-color: #000;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    width: 100%;
+}
+button:hover {
+    background-color: #333;
+}
+</style>
+<script>
+function enviar() {
+    let aula = document.getElementById("aula").value;
+    let incidencia = document.getElementById("incidencia").value;
+    let prioridad = document.querySelector('input[name="prio"]:checked');
+    let profesor = document.getElementById("profesor").value;
+
+    if(!prioridad) {
+        alert("Seleccione una prioridad");
+        return;
+    }
+
+    let texto = 
+        "AULA: " + aula + "\n" +
+        "INCIDENCIA: " + incidencia + "\n" +
+        "PRIORIDAD: " + prioridad.value + "\n" +
+        "PROFESOR: " + profesor + "\n" +
+        "";
+
+    let url = "https://wa.me/34617186487?text=" + encodeURIComponent(texto);
+    window.location.href = url;
+}
+</script>
+</head>
+<body>
+
+<h2>FORMULARIO DE INCIDENCIAS – Pearson 9</h2>
+
+<label>Aula / Espacio:</label>
+<input type="text" id="aula">
+
+<label>Incidencia:</label>
+<textarea id="incidencia" rows="3"></textarea>
+
+<label>Prioridad:</label><br>
+<input type="radio" name="prio" value="Alta"> Alta<br>
+<input type="radio" name="prio" value="Media"> Media<br>
+<input type="radio" name="prio" value="Baja"> Baja<br><br>
+
+<label>Profesor:</label>
+<input type="text" id="profesor">
+
+<button onclick="enviar()">ENVIAR POR WHATSAPP</button>
+
+</body>
+</html>
